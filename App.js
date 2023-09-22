@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// this provides some helpful reset styles to ensure a more consistent look
 
+// only import this from your web app, not native
+
+import { Button, TamaguiProvider } from 'tamagui'
+import config from './tamagui.config'
+import { SafeAreaView, Text, View } from 'react-native'
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  return (
+
+    <TamaguiProvider config={config}>
+
+      <SafeAreaView>
+        <Button>Hello world</Button>
+      </SafeAreaView>
+
+    </TamaguiProvider>
+
+  )
+
+}
