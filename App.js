@@ -1,22 +1,24 @@
-// this provides some helpful reset styles to ensure a more consistent look
+import AppProviders from './src/AppProviders'
+import { useFonts } from 'expo-font'
+import {useEffect} from 'react'
 
-// only import this from your web app, not native
 
-import { Button, TamaguiProvider } from 'tamagui'
-import config from './tamagui.config'
-import { SafeAreaView, Text, View } from 'react-native'
 export default function App() {
+  const [loaded] = useFonts({
+    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
+    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
+  });
 
+  useEffect(() => {
+    if (loaded) {
+      // can hide splash screen here
+    }
+  }, [loaded])
+
+  if (!loaded) {
+    return null;
+  }
   return (
-
-    <TamaguiProvider config={config}>
-
-      <SafeAreaView>
-        <Button>Hello world</Button>
-      </SafeAreaView>
-
-    </TamaguiProvider>
-
+    <AppProviders />
   )
-
 }
